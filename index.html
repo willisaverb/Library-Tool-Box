@@ -1,91 +1,54 @@
-,<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Task Generator</title>
+    <title>Your Landing Page</title>
     <style>
         body {
-            font-family: 'Work Sans', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
-            text-align: center;
+            padding: 0;
         }
-        #h1 {
-            font-size: 36px; /* Adjust the font size as needed */
-            margin: 20px 0; /* Adjust the top and bottom margins as needed */
+        
+        nav {
+            background-color: #333;
+            padding: 1rem;
         }
-        #panel {
-            width: 80%;
-            max-width: 600px;   
-            margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
-        #generateBtn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+        
+        nav ul li {
+            display: inline;
+            margin-right: 1rem;
         }
-        #result {
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for padding */
-            font-size: 18px;
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
         }
-        #gifContainer {
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for padding */
-        }
-        #shrugGif {
-            width: 400px; /* Adjust this value to make the GIF larger or smaller */
-            height: auto; /* This maintains the aspect ratio */
+        
+        .content {
+            padding: 2rem;
         }
     </style>
 </head>
 <body>
-    <h1>Random Task Generator</h1>
-    <div id="panel">
-        <div id="field_name">Are you overwhelmed with tasks and don't know where to start? Worry no longer with Will's fail-safe, 100% guaranteed-to-work-for-you-every-single-time and not at all vulnerable to cyber attacks RANDOM TASK GENERATOR</div>
-    </div>	
-    <div id="gifContainer">
-        <img src="Whatmeworry.gif" alt="Pixel art beard man shrugs" id="shrugGif">
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="Random Task Generator.html">Random Task Generator</a></li>
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <h1>Welcome to Our Landing Page</h1>
+        <p>This is a simple landing page with a navigation bar. Click on "Random Task Generator" in the nav bar to go to your task generator page.</p>
     </div>
-    <button id="generateBtn">Take the decision out of my hands</button>
-    <div id="result"></div>
-
-    <script>
-        const tasks = [
-            "Write a Marketing Brief",
-            "Delete/Archive emails > 1 month old",
-            "Cm9 All emails",
-            "30 mins LinkedIn Learning",
-            "Write a plan for this week",
-            "Check calendar allocations",
-            "Buy Will a coffee",
-            "Update Implementation Checklist",
-            "Write professional reflections",
-            "Write a Runsheet for your next program",
-            "Do that thing you don't want to do",
-            "Scream into a pillow",
-            "Raise a Purchase Order Number",
-            "Send Post Program Surveys"
-        ];
-
-        const generateBtn = document.getElementById('generateBtn');
-        const result = document.getElementById('result');
-
-        generateBtn.addEventListener('click', () => {
-            
-        
-
-            const randomIndex = Math.floor(Math.random() * tasks.length);
-            const selectedTask = tasks[randomIndex];
-            result.textContent = `Selected Task: ${selectedTask}`;
-            
-            localStorage.setItem('lastClick', now);
-        });
-    </script>
 </body>
 </html>
