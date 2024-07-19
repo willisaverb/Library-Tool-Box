@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Generator</title>
+    <style>
+        body {
+            font-family: Work Sans, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #generateBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #gifContainer {
+            margin-top: 20px;
+margin-bottom: 50px;
+        }
+        #shrugGif {
+            width: 600px; /
+            height: auto; /}
+       
+#panel { 
+width: 600px;            
+margin-top: 20px;
+margin-bottom: 50px;
+         }
+    </style>
+</head>
+<body>
+<div id="panel">
+  <div id="field_name">Are you overloaded with tasks but don't know where to start.  Worry no longer with Will Chittick's fail-safe, 100% guaranteed, not vulnerable to  cyber attacks or DDOS at all RANDOM TASK GENERATOR</div>
+</div>	
+    <div id="gifContainer">
+        <img src="Shrug.gif" alt="Shrug GIF" id="shrugGif">
+    </div>
+    <button id="generateBtn">Take the decision out of my hands</button>
+    <div id="result"></div>
+
+    <script>
+        const tasks = [
+            "Project on a page",
+            "Photo Bingo",
+            "Cm9 All emails",
+            "CE Policy Councillor Briefing",
+            "Annual Report",
+            "Media Lab Working Group",
+            "Open Data",
+            "Data Visualisation LinkedIn",
+            "Write Reflections",
+            "Marketing Brief - Media Lab Tour",
+            "Delete Emails"
+        ];
+
+        const generateBtn = document.getElementById('generateBtn');
+        const result = document.getElementById('result');
+
+        generateBtn.addEventListener('click', () => {
+            const lastClick = localStorage.getItem('lastClick');
+            const now = new Date().getTime();
+            
+            if (lastClick && (now - lastClick < 0 * 05 * 05 * 1000)) {
+                result.textContent = "Please wait 24 hours before clicking the button again.";
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * tasks.length);
+            const selectedTask = tasks[randomIndex];
+            result.textContent = `Selected Task: ${selectedTask}`;
+            
+            localStorage.setItem('lastClick', now);
+        });
+    </script>
+</body>
+</html>
