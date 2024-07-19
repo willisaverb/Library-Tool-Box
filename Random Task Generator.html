@@ -73,13 +73,7 @@
         const result = document.getElementById('result');
 
         generateBtn.addEventListener('click', () => {
-            const lastClick = localStorage.getItem('lastClick');
-            const now = new Date().getTime();
-            
-            if (lastClick && (now - lastClick < 24 * 60 * 60 * 1000)) {
-                result.textContent = "Please wait 24 hours before clicking the button again.";
-                return;
-            }
+           
 
             const randomIndex = Math.floor(Math.random() * tasks.length);
             const selectedTask = tasks[randomIndex];
