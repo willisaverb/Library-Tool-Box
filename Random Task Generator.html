@@ -6,23 +6,22 @@
     <title>Random Task Generator</title>
     <style>
         body {
-            font-family: Work Sans, sans-serif;
+            font-family: 'Work Sans', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
+            text-align: center;
         }
-         h1 {font-family: Work Sans, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            margin-top: 0;
-            font-size: 72px;
+        h1 {
+            font-size: 36px; /* Adjust the font size as needed */
+            margin: 20px 0; /* Adjust the top and bottom margins as needed */
+        }
+        #panel {
+            width: 600px;
+            margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
         }
         #generateBtn {
             margin-top: 20px;
@@ -31,28 +30,24 @@
         }
         #result {
             margin-top: 20px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
             font-size: 18px;
         }
         #gifContainer {
             margin-top: 20px;
-margin-bottom: 50px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
         }
         #shrugGif {
-            width: 600px; /
-            height: auto; /}
-       
-#panel { 
-width: 600px;            
-margin-top: 0px;
-margin-bottom: 50px;
-         }
+            width: 600px; /* Adjust this value to make the GIF larger or smaller */
+            height: auto; /* This maintains the aspect ratio */
+        }
     </style>
 </head>
 <body>
-<h1>Random Task Generator</h1>
-<div id="panel">
-  <div id="field_name">Are you overloaded with tasks but don't know where to start.  Worry no longer with Will Chittick's fail-safe, 100% guaranteed, not vulnerable to  cyber attacks or DDOS at all RANDOM TASK GENERATOR</div>
-</div>	
+    <h1>Random Task Generator</h1>
+    <div id="panel">
+        <div id="field_name">Are you overloaded with tasks but don't know where to start? Worry no longer with Will Chittick's fail-safe, 100% guaranteed, not vulnerable to cyber attacks or DDOS at all RANDOM TASK GENERATOR</div>
+    </div>	
     <div id="gifContainer">
         <img src="Shrug.gif" alt="Shrug GIF" id="shrugGif">
     </div>
@@ -81,7 +76,7 @@ margin-bottom: 50px;
             const lastClick = localStorage.getItem('lastClick');
             const now = new Date().getTime();
             
-            if (lastClick && (now - lastClick < 0 * 05 * 05 * 1000)) {
+            if (lastClick && (now - lastClick < 24 * 60 * 60 * 1000)) {
                 result.textContent = "Please wait 24 hours before clicking the button again.";
                 return;
             }
