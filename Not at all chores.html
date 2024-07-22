@@ -1,0 +1,109 @@
+,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Song generator</title>
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        #h1 {
+            font-size: 36px; 
+            margin: 20px 0;                                                         
+        }
+        #panel {
+            width: 80%;
+            max-width: 600px;   
+            margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
+        }
+        #generateBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
+            font-size: 18px;
+        }
+        #gifContainer {
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
+        }
+        #shrugGif {
+            width: 400px; /* Adjust this value to make the GIF larger or smaller */
+            height: auto; /* This maintains the aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Task Generator</h1>
+    <div id="panel">
+        <div id="field_name">Food in the Belly, Air in the Lungs, Music is Medicine, I am Drugs</div>
+    </div>	
+    <div id="gifContainer">
+        <img src="Whatmeworry.gif" alt="Pixel art beard man shrugs" id="shrugGif">
+    </div>
+    <button id="generateBtn">Take the decision out of my hands</button>
+    <div id="result"></div>
+
+    <script>
+        const tasks = [
+            "Absolve Myself",
+            "Intelligent Design",
+            "One Good Day",
+            "October Children",
+            "Hollow Day",
+            "Burn and Release",
+            "Ropongi",
+            "Feelin' Fine (Fear)",
+            "WBirds of a Feather",
+            "Learn to live without you",
+            "Best Dressed",
+            "Be Mild",
+            "Bad Boy Bubby",
+            "One More Night",
+            "Unevil",
+            "Kebabaria",
+            "Fedora",
+            "5 Eyes",
+            "Real Thing",
+            "Laura",
+            "Cruisin"
+            "Friday Night",
+            "Western Plains",
+            "Strangers have the best Candy",
+            "Lilly Rose",
+            "Vicious Rumours",
+            "Women Strange",
+            "Year of OUr Lord 2012",
+            "The Colour is Red",
+            "the Surfer",
+            "Long is the Road",
+            "the Cukhold's Lament",
+        ];
+
+        const generateBtn = document.getElementById('generateBtn');
+        const result = document.getElementById('result');
+
+        generateBtn.addEventListener('click', () => {
+            
+        
+
+            const randomIndex = Math.floor(Math.random() * tasks.length);
+            const selectedTask = tasks[randomIndex];
+            result.textContent = `Selected Task: ${selectedTask}`;
+            
+            localStorage.setItem('lastClick', now);
+        });
+    </script>
+</body>
+</html>
