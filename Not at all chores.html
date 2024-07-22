@@ -6,7 +6,7 @@
     <title>Random Song generator</title>
     <style>
         body {
-            font-family: 'Work Sans', sans-serif;
+            font-family: 'Georgia', bold, italic;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -47,7 +47,7 @@
 <body>
     <h1>Random Task Generator</h1>
     <div id="panel">
-        <div id="field_name">Food in the Belly, Air in the Lungs, Music is Medicine, I am Drugs</div>
+        <div id="field_name">Music is Medicine</div>
     </div>	
     <div id="gifContainer">
         <img src="Whatmeworry.gif" alt="Pixel art beard man shrugs" id="shrugGif">
@@ -77,7 +77,7 @@
             "5 Eyes",
             "Real Thing",
             "Laura",
-            "Cruisin"
+            "Cruisin",
             "Friday Night",
             "Western Plains",
             "Strangers have the best Candy",
@@ -88,7 +88,7 @@
             "The Colour is Red",
             "the Surfer",
             "Long is the Road",
-            "the Cukhold's Lament",
+            "the Cukhold's Lament"
         ];
 
         const generateBtn = document.getElementById('generateBtn');
@@ -102,7 +102,6 @@
             const selectedTask = tasks[randomIndex];
             result.textContent = `Selected Task: ${selectedTask}`;
             
-            localStorage.setItem('lastClick', now);
         });
     </script>
 </body>
