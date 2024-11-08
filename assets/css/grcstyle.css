@@ -8,11 +8,16 @@
             margin: 0;
             text-align: center;
         }
-    nav {
-        background-color: black;
-        display: flex;
-        top: 0;
-    }
+        nav {
+            background-color: black;
+            display: flex;
+            justify-content: center; /* Center the nav items horizontally */
+            position: fixed;
+            top: 0;
+            width: 100%; /* Span the full width */
+            padding: 10px 0; /* Add padding for height */
+            z-index: 1000; /* Ensure it stays on top of content */
+        }
         #h1 {
             font-size: 36px; /* Adjust the font size as needed */
             margin: 20px 0; /* Adjust the top and bottom margins as needed */
