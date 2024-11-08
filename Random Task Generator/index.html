@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Task Generator</title>
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        #h1 {
+            font-size: 36px; /* Adjust the font size as needed */
+            margin: 20px 0; /* Adjust the top and bottom margins as needed */
+        }
+        #panel {
+            width: 80%;
+            max-width: 600px;   
+            margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
+        }
+        #generateBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
+            font-size: 18px;
+        }
+        #gifContainer {
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add bottom margin for padding */
+        }
+        #shrugGif {
+            width: 400px; /* Adjust this value to make the GIF larger or smaller */
+            height: auto; /* This maintains the aspect ratio */
+        }
+    </style>
+</head>
+<body>
+        <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="Not at all chores.html">About</a></li>
+            <li><a href="Random Task Generator.html">Random Task Generator</a></li>
+        </ul>
+    </nav>
+    <h1>Random Task Generator</h1>
+    <div id="panel">
+        <div id="field_name">Are you overwhelmed with tasks and don't know where to start? Worry no longer with Will's fail-safe, 100% guaranteed-to-work-for-you-every-single-time and not at all vulnerable to cyber attacks RANDOM TASK GENERATOR</div>
+    </div>	
+    <div id="gifContainer">
+        <img src="Whatmeworry.gif" alt="Pixel art beard man shrugs" id="shrugGif">
+    </div>
+    <button id="generateBtn">Take the decision out of my hands</button>
+    <div id="result"></div>
 
+    <script>
+        const tasks = [
+            "Write a Marketing Brief",
+            "Delete/Archive emails > 1 month old",
+            "Cm9 All emails",
+            "30 mins LinkedIn Learning",
+            "Write a plan for this week",
+            "Check calendar allocations",
+            "Buy Will a coffee",
+            "Update Implementation Checklist",
+            "Write professional reflections",
+            "Write a Runsheet for your next program",
+            "Do that thing you don't want to do",
+            "Scream into a pillow",
+            "Raise a Purchase Order Number",
+            "Send Post Program Surveys"
+        ];
+
+        const generateBtn = document.getElementById('generateBtn');
+        const result = document.getElementById('result');
+
+        generateBtn.addEventListener('click', () => {
+            
+        
+
+            const randomIndex = Math.floor(Math.random() * tasks.length);
+            const selectedTask = tasks[randomIndex];
+            result.textContent = `Selected Task: ${selectedTask}`;
+            
+            localStorage.setItem('lastClick', now);
+        });
+    </script>
+</body>
+</html>
