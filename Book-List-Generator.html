@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<! ChatGPT Generated book list gnerator.  ux around with html no more with this simple form>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +10,7 @@
         .book-entry { margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; }
         .book-entry h3 { font-size: 1em; font-weight: bold; }
         button { padding: 8px 12px; margin-top: 10px; }
+        #preview { border: 1px solid #ddd; padding: 15px; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -23,8 +23,13 @@
                 <h3>Book 1</h3>
                 <label>Image Link:</label>
                 <input type="text" class="imageLink" required><br><br>
+                
                 <label>Title:</label>
                 <input type="text" class="title" required><br><br>
+                
+                <label>Library Record Link:</label>
+                <input type="text" class="recordLink" placeholder="https://library-record.com" required><br><br>
+
                 <label>Description:</label><br>
                 <textarea class="description" rows="4" required></textarea><br><br>
             </div>
@@ -35,10 +40,11 @@
     <div class="output-container">
         <h2>Generated HTML</h2>
         <pre id="output"></pre>
+        <h2>HTML Preview</h2>
+        <div id="preview"></div>
     </div>
 
     <script>
-        // Function to clone the book entry template up to 10 times
         function createBookEntries() {
             const bookEntries = document.getElementById("bookEntries");
             for (let i = 2; i <= 10; i++) {
@@ -50,6 +56,8 @@
                     <input type="text" class="imageLink" required><br><br>
                     <label>Title:</label>
                     <input type="text" class="title" required><br><br>
+                    <label>Library Record Link:</label>
+                    <input type="text" class="recordLink" placeholder="https://library-record.com" required><br><br>
                     <label>Description:</label><br>
                     <textarea class="description" rows="4" required></textarea><br><br>
                 `;
@@ -61,33 +69,44 @@
         function generateHTML() {
             const imageLinks = document.querySelectorAll(".imageLink");
             const titles = document.querySelectorAll(".title");
+            const recordLinks = document.querySelectorAll(".recordLink");
             const descriptions = document.querySelectorAll(".description");
 
-            // Start the HTML structure (using div or table)
             let htmlOutput = '<div style="display: flex; flex-direction: column;">\n';
+            let previewHTML = '';
 
             for (let i = 0; i < imageLinks.length; i++) {
                 const imageLink = imageLinks[i].value;
                 const title = titles[i].value;
+                const recordLink = recordLinks[i].value;
                 const description = descriptions[i].value;
 
-                // Only add the HTML if the title field is filled
                 if (title) {
-                    htmlOutput += `
+                    const bookHTML = `
                         <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; display: flex;">
                             <img src="${imageLink}" alt="${title}" style="width: 100px; float: left; margin-right: 10px;">
                             <div style="overflow: hidden;">
-                                <h3 style="margin: 0; font-size: 1.2em;">${title}</h3>
+                                <h3 style="margin: 0; font-size: 1.2em;">
+                                    <a href="${recordLink}" target="_blank" style="color: #1a73e8; text-decoration: none;">${title}</a>
+                                </h3>
                                 <p style="margin: 10px 0;">${description}</p>
                             </div>
                         </div>
                     `;
+                    htmlOutput += bookHTML;
+                    previewHTML += bookHTML;  // Build the live preview HTML
                 }
             }
             htmlOutput += '</div>';
 
             document.getElementById("output").innerText = htmlOutput;
+            document.getElementById("preview").innerHTML = previewHTML;  // Display live preview
         }
+    </script>
+
+</body>
+</html>
+
 
 <! TO sWITCH TO A TABLE LAYOUT UPDATEHTMLoUTPU INSIDE GENERATEhtml FUNCTION let htmlOutput = '<table style="width: 100%; border-collapse: collapse;">\n';
 htmlOutput += '<tr><th>Image</th><th>Title</th><th>Description</th></tr>';
@@ -109,7 +128,3 @@ for (let i = 0; i < imageLinks.length; i++) {
 }
 htmlOutput += '</table>';
 >
-    </script>
-
-</body>
-</html>
