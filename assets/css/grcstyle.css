@@ -11,12 +11,15 @@
         nav {
             background-color: black;
             display: flex;
-            justify-content: center; /* Center the nav items horizontally */
+            flex-direction: column;
+            justify-content: space-between; /* Center the nav items horizontally */
             position: fixed;
             top: 0;
             width: 100%; /* Span the full width */
             padding: 10px 0; /* Add padding for height */
             z-index: 1000; /* Ensure it stays on top of content */
+            color: aliceblue;
+            font-weight: bolder;
         }
         #h1 {
             font-size: 36px; /* Adjust the font size as needed */
