@@ -43,9 +43,9 @@ color: #ddd; /* Slightly lighter color on hover */
 
 
 .description {
-width: 100vh;
-height: 80vh
-}
+    width: 50vh;
+    height: 10vh
+  }
 
 .book-entry{
 margin-left: 3em;
