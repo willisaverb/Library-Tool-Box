@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="../assets/css/grcstyle.css"
 </head>
 <body>
-
+<nav>
+        <ul>
+            <li><a href="/Random-Task-Generator/">Home</a></li>
+            <li><a href='../Random%20Task%20Generator/'>Random Task Generator</a></li>
+        </ul>
+    </nav>
     <h1>Library Book HTML Generator</h1>
+  <p> Use this tool to generate a neat html snippet that can be inserted into emails.  I use it to create book lists for program participant.  What will you use it for?</p>
     <form id="bookForm">
         <div id="bookEntries">
             <!-- Book entry template repeated 10 times -->
@@ -30,11 +36,11 @@
         <button type="button" onclick="generateHTML()">Generate HTML</button>
     </form>
 
-    <div class="output-container">
+    <div >
         <h2>Generated HTML</h2>
-        <pre id="output"></pre>
+        <pre id="output" ></pre>
         <h2>HTML Preview</h2>
-        <div id="preview"></div>
+        <div id="preview" class="output-container"></div>
     </div>
 
     <script>
@@ -101,23 +107,3 @@
 </html>
 
 
-<! TO sWITCH TO A TABLE LAYOUT UPDATEHTMLoUTPU INSIDE GENERATEhtml FUNCTION let htmlOutput = '<table style="width: 100%; border-collapse: collapse;">\n';
-htmlOutput += '<tr><th>Image</th><th>Title</th><th>Description</th></tr>';
-
-for (let i = 0; i < imageLinks.length; i++) {
-    const imageLink = imageLinks[i].value;
-    const title = titles[i].value;
-    const description = descriptions[i].value;
-
-    if (title) {
-        htmlOutput += `
-            <tr>
-                <td><img src="${imageLink}" alt="${title}" style="width: 100px;"></td>
-                <td><strong>${title}</strong></td>
-                <td>${description}</td>
-            </tr>
-        `;
-    }
-}
-htmlOutput += '</table>';
->

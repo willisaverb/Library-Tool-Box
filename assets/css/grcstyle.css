@@ -1,50 +1,95 @@
-   body {
-            font-family: 'Work Sans', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        nav {
-            background-color: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Center the nav items horizontally */
-            position: fixed;
-            top: 0;
-            width: 100%; /* Span the full width */
-            padding: 10px 0; /* Add padding for height */
-            z-index: 1000; /* Ensure it stays on top of content */
-            color: aliceblue;
-            font-weight: bolder;
-        }
-        #h1 {
-            font-size: 36px; /* Adjust the font size as needed */
-            margin: 20px 0; /* Adjust the top and bottom margins as needed */
-        }
-        #panel {
-            width: 80%;
-            max-width: 600px;   
-            margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
-        }
-        #generateBtn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        #result {
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for padding */
-            font-size: 18px;
-        }
-        #gifContainer {
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for padding */
-        }
-        #shrugGif {
-            width: 400px; /* Adjust this value to make the GIF larger or smaller */
-            height: auto; /* This maintains the aspect ratio */
-        }
+body {
+    font-family: 'Work Sans', sans-serif;
+    
+}
+
+/* Styles for the navigation bar */
+nav {
+position: sticky; /* Keeps the navbar at the top while scrolling */
+top: 0;           /* Aligns it at the top */
+background-color: black; /* Black background */
+color: white;     /* White text */
+width: 100%;      /* Full width */
+padding: 10px 0;  /* Adds padding around the text */
+z-index: 1000;    /* Ensures the nav stays above other elements */
+}
+
+/* Remove default list styling and make the items horizontal */
+nav ul {
+list-style: none; /* Removes bullet points */
+display: flex;    /* Flexbox layout for horizontal alignment */
+justify-content: space-around; /* Evenly distributes items horizontally */
+padding: 0;       /* Removes default padding */
+margin: 0;        /* Removes default margin */
+}
+
+/* Style each menu item */
+nav li {
+margin: 0 10px; /* Adds horizontal spacing between menu items */
+}
+
+/* Style for the navigation links */
+nav a {
+color: white;     /* White text color for links */
+text-decoration: none; /* Removes underline */
+font-size: 16px;  /* Adjust font size as needed */
+padding: 10px 20px; /* Adds padding for clickable area */
+transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav a:hover {
+color: #ddd; /* Slightly lighter color on hover */
+}
+
+
+.description {
+width: 100vh;
+height: 80vh
+}
+
+.book-entry{
+margin-left: 3em;
+
+}
+
+.output-container {
+margin-left: 3em;
+border: solid 1px;
+}
+
+.body-content  {display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;}
+
+
+#h1 {
+    font-size: 36px; /* Adjust the font size as needed */
+    margin: 20px 0; /* Adjust the top and bottom margins as needed */
+}
+#panel {
+    width: 80%;
+    max-width: 600px;   
+    margin: 0 0 20px 0; /* Adjust the bottom margin for padding */
+}
+#generateBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+#result {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add bottom margin for padding */
+    font-size: 18px;
+}
+#gifContainer {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add bottom margin for padding */
+}
+#shrugGif {
+    width: 400px; /* Adjust this value to make the GIF larger or smaller */
+    height: auto; /* This maintains the aspect ratio */
+}
