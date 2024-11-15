@@ -63,6 +63,10 @@ border: solid 1px;
     align-items: center;
     justify-content: center;
     margin-left: 1rem;}
+.body-image {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
 .slender-body {
     margin: 25px 150px 0px;
