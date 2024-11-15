@@ -68,5 +68,10 @@ border: solid 1px;
     margin: 25px 150px 0px;
 }
 
-
+@media only screen and (max-width: 600px) {
+    .slender-body {
+      margin: 3px 15px 3px;
+    }
+  }
+  
 
