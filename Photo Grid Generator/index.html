@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Grid Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Photo Grid Generator</h1>
+  <form id="photoGridForm">
+    <p>Enter up to 25 image links:</p>
+    <div id="fieldsContainer">
+      <!-- 25 fields will be generated here -->
+    </div>
+    <button type="submit">Generate Photo Grid</button>
+  </form>
+  <div class="output">
+    <h2>Generated Photo Grid:</h2>
+    <div id="photoGridOutput"></div>
+  </div>
+  <script>
+    const fieldsContainer = document.getElementById('fieldsContainer');
+    const photoGridForm = document.getElementById('photoGridForm');
+    const photoGridOutput = document.getElementById('photoGridOutput');
+
+    // Generate 25 input fields dynamically
+    for (let i = 1; i <= 25; i++) {
+      const label = document.createElement('label');
+      label.textContent = `Image ${i} URL:`;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = `image${i}`;
+      input.placeholder = `Enter image URL ${i}`;
+      fieldsContainer.appendChild(label);
+      fieldsContainer.appendChild(input);
+    }
+
+    // Handle form submission
+    photoGridForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(photoGridForm);
+      const photoGridDiv = document.createElement('div');
+      photoGridDiv.classList.add('photo-grid');
+
+      formData.forEach((value, key) => {
+        if (value.trim() !== '') {
+          const img = document.createElement('img');
+          img.src = value;
+          img.alt = `Photo ${key}`;
+          photoGridDiv.appendChild(img);
+        }
+      });
+
+      // Clear previous output and append new grid
+      photoGridOutput.innerHTML = '';
+      photoGridOutput.appendChild(photoGridDiv);
+    });
+  </script>
+</body>
+</html>
