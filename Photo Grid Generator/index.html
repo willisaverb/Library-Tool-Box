@@ -33,6 +33,14 @@
     button:hover {
       background-color: #0056b3;
     }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-family: monospace;
+    }
     .output {
       margin-top: 20px;
     }
@@ -44,7 +52,6 @@
     .photo-grid img {
       width: 100%;
       height: auto;
-      border-radius: 5px;
     }
   </style>
 </head>
@@ -60,11 +67,15 @@
   <div class="output">
     <h2>Generated Photo Grid:</h2>
     <div id="photoGridOutput"></div>
+    <textarea id="htmlOutput" readonly placeholder="Generated HTML will appear here..."></textarea>
+    <button id="copyButton">Copy HTML</button>
   </div>
   <script>
     const fieldsContainer = document.getElementById('fieldsContainer');
     const photoGridForm = document.getElementById('photoGridForm');
     const photoGridOutput = document.getElementById('photoGridOutput');
+    const htmlOutput = document.getElementById('htmlOutput');
+    const copyButton = document.getElementById('copyButton');
 
     // Generate 25 input fields dynamically
     for (let i = 1; i <= 25; i++) {
@@ -85,18 +96,28 @@
       const photoGridDiv = document.createElement('div');
       photoGridDiv.classList.add('photo-grid');
 
-      formData.forEach((value, key) => {
+      formData.forEach((value) => {
         if (value.trim() !== '') {
           const img = document.createElement('img');
           img.src = value;
-          img.alt = `Photo ${key}`;
+          img.alt = "Photo";
           photoGridDiv.appendChild(img);
         }
       });
 
-      // Clear previous output and append new grid
+      // Update output
       photoGridOutput.innerHTML = '';
       photoGridOutput.appendChild(photoGridDiv);
+
+      // Generate HTML output
+      htmlOutput.value = photoGridDiv.outerHTML;
+    });
+
+    // Copy HTML to clipboard
+    copyButton.addEventListener('click', function () {
+      htmlOutput.select();
+      document.execCommand('copy');
+      alert('HTML copied to clipboard!');
     });
   </script>
 </body>
