@@ -35,5 +35,11 @@
             <img src="${book.cover?.medium || ''}" alt="Book cover">
           `;
         })
-        .catch(error => {
-          document.getElementById('result').inner
+       .catch(error => {
+          document.getElementById('result').innerHTML = "Error fetching book data.";
+          console.error(error);
+        });
+    }
+  </script>
+</body>
+</html>
