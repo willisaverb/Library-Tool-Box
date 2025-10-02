@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Book Search</title>
+  <link rel="stylesheet" href="../assets/css/grcstyle.css">
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; }
     input, button { padding: 10px; margin: 5px; }
@@ -10,10 +11,21 @@
   </style>
 </head>
 <body>
-  <h1>Search Book by ISBN</h1>
-  <input type="text" id="isbn" placeholder="Enter ISBN (e.g. 0451526538)">
-  <button onclick="searchBook()">Search</button>
-  <div id="result"></div>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../Random Task Generator.html">Random Task Generator</a></li>
+      <li><a href="../Book-List-Generator.html">Book List Generator</a></li>
+      <li><a href="../Not at all chores.html">Not At All Chores</a></li>
+      <li><a href="index.html">Book Lookup</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    <h1>Search Book by ISBN</h1>
+    <input type="text" id="isbn" placeholder="Enter ISBN (e.g. 0451526538)">
+    <button onclick="searchBook()">Search</button>
+    <div id="result"></div>
+  </div>
 
   <script>
     function searchBook() {
