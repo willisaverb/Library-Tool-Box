@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "I'm Will I like making things, mostly music and photography but as of today code. Yum Yum code give me all the code I design educational programs(activities) at libraries. Pronouns:He/Him willisaverb@gmail.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willisaverb/Library-Tool-Box.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/willisaverb/Library-Tool-Box/issues"
+  },
+  "homepage": "https://github.com/willisaverb/Library-Tool-Box#readme",
+  "dependencies": {
+    "formidable": "^3.5.4",
+    "openai": "^6.10.0"
+  }
+}
