@@ -1,35 +1,261 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LibraryGO Letter Generator</title>
- <link rel="stylesheet" href="../assets/css/grcstyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/grcstyle.css">
+  <style>
+    :root {
+      --primary-color: #00a5a5;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #f4f7f6;
+      font-family: 'Work Sans', sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 1px solid var(--primary-color);
+      border-top: 10px solid var(--primary-color);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 20px;
+    }
+    .logo-placeholder {
+      width: 150px;
+      height: 60px;
+      background-color: #f0f0f0;
+      border: 2px dashed var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-weight: bold;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .logo-placeholder img {
+      max-width: 100%;
+      height: auto;
+    }
+    h1, h2, h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+    .instructions {
+      background-color: #f0fafa;
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      border-left: 5px solid var(--primary-color);
+    }
+    .instructions h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    .instructions ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+    }
+    .form-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fafafa;
+      border-radius: 6px;
+      border: 1px solid #eee;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    select:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    .generate-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      width: 100%;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    .generate-btn:hover {
+      background-color: #008484;
+    }
+    .generate-btn:active {
+      transform: translateY(1px);
+    }
+    .output-section {
+      margin-top: 40px;
+    }
+    .output-card {
+      margin-bottom: 25px;
+      border: 1px solid var(--primary-color);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .output-header {
+      background-color: #f0fafa;
+      padding: 10px 15px;
+      border-bottom: 1px solid var(--primary-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-header label {
+      margin-bottom: 0;
+      color: var(--primary-color);
+    }
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #fff;
+      resize: vertical;
+      display: block;
+    }
+    #subjectOutput {
+      height: 60px;
+    }
+    #bodyOutput {
+      height: 300px;
+    }
+    .copy-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.2s;
+    }
+    .copy-btn:hover {
+      background-color: #008484;
+    }
+    .copy-btn.success {
+      background-color: #28a745;
+    }
+  </style>
 </head>
 <body>
-  <h1>LibraryGO Letter Generator</h1>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../Random Task Generator.html">Random Task Generator</a></li>
+      <li><a href="../Book-List-Generator.html">Book List Generator</a></li>
+      <li><a href="../Not at all chores.html">Not At All Chores</a></li>
+      <li><a href="../Book Lookup/index.html">Book Lookup</a></li>
+      <li><a href="index.html">Email Generator</a></li>
+    </ul>
+  </nav>
 
-  <label for="letterType">Select Letter Type:</label>
-  <select id="letterType">
-    <option value="thirdFail">Third Failed Delivery</option>
-    <option value="recommencement">Service Recommencement</option>
-    <option value="fourthFail">Fourth Failed Delivery</option>
-    <option value="overdue">Overdue Item</option>
-    <option value="pictureBooks">Transition to Picture Books</option>
-  </select>
+  <div class="container">
+    <header>
+      <div class="logo-placeholder">
+        <img src="https://placehold.co/150x60?text=Library+Logo" alt="Library Logo" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+        <span>Library Logo</span>
+      </div>
+      <h1>LibraryGO Letter Generator</h1>
+    </header>
 
-  <label for="customerName">Customer First Name:</label>
-  <input type="text" id="customerName" placeholder="Enter first name">
+    <div class="instructions">
+      <h3>How to use this tool:</h3>
+      <ol>
+        <li><strong>Select</strong> the appropriate letter template from the dropdown.</li>
+        <li><strong>Enter</strong> the customer's first name to personalize the letter.</li>
+        <li><strong>Click</strong> "Generate Letter" to prepare the text.</li>
+        <li><strong>Use</strong> the copy buttons to quickly grab the subject and body.</li>
+        <li><strong>Paste</strong> into your email client and you're ready to send!</li>
+      </ol>
+    </div>
 
-  <button onclick="generateLetter()">Generate Letter</button>
+    <div class="form-section">
+      <div class="form-group">
+        <label for="letterType">Select Letter Type:</label>
+        <select id="letterType">
+          <option value="thirdFail">Third Failed Delivery</option>
+          <option value="recommencement">Service Recommencement</option>
+          <option value="fourthFail">Fourth Failed Delivery</option>
+          <option value="overdue">Overdue Item</option>
+          <option value="pictureBooks">Transition to Picture Books</option>
+        </select>
+      </div>
 
-  <label for="subjectOutput">Generated Subject:</label>
-  <textarea id="subjectOutput" readonly></textarea>
-  <button class="copy-btn" onclick="copyToClipboard('subjectOutput')">Copy Subject</button>
+      <div class="form-group">
+        <label for="customerName">Customer First Name:</label>
+        <input type="text" id="customerName" placeholder="e.g. John">
+      </div>
 
-  <label for="bodyOutput">Generated HTML Body:</label>
-  <textarea id="bodyOutput" readonly></textarea>
-  <button class="copy-btn" onclick="copyToClipboard('bodyOutput')">Copy HTML Body</button>
+      <button class="generate-btn" onclick="generateLetter()">Generate Letter</button>
+    </div>
+
+    <div class="output-section">
+      <div class="output-card">
+        <div class="output-header">
+          <label for="subjectOutput">Generated Subject</label>
+          <button class="copy-btn" onclick="copyToClipboard('subjectOutput')">
+            Copy Subject
+          </button>
+        </div>
+        <textarea id="subjectOutput" readonly placeholder="Subject will appear here..."></textarea>
+      </div>
+
+      <div class="output-card">
+        <div class="output-header">
+          <label for="bodyOutput">Generated HTML Body</label>
+          <button class="copy-btn" onclick="copyToClipboard('bodyOutput')">
+            Copy HTML Body
+          </button>
+        </div>
+        <textarea id="bodyOutput" readonly placeholder="HTML Body will appear here..."></textarea>
+      </div>
+    </div>
+  </div>
 
   <script>
     const letters = {
@@ -86,11 +312,36 @@
       document.getElementById('bodyOutput').value = letter.body.replace('{name}', name);
     }
 
-    function copyToClipboard(elementId) {
+    async function copyToClipboard(elementId) {
       const textarea = document.getElementById(elementId);
-      textarea.select();
-      document.execCommand('copy');
-      alert('Copied to clipboard!');
+      if (!textarea.value) return;
+
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        showCopyFeedback(elementId);
+      } catch (err) {
+        console.error('Unable to copy using clipboard API, falling back to execCommand', err);
+        textarea.select();
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showCopyFeedback(elementId);
+          }
+        } catch (copyErr) {
+          console.error('Fallback copy failed', copyErr);
+        }
+      }
+    }
+
+    function showCopyFeedback(elementId) {
+      const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      btn.classList.add('success');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('success');
+      }, 2000);
     }
   </script>
 </body>
