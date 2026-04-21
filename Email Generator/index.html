@@ -1,35 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LibraryGO Letter Generator</title>
- <link rel="stylesheet" href="../assets/css/grcstyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/grcstyle.css">
 </head>
-<body>
-  <h1>LibraryGO Letter Generator</h1>
+<body class="email-generator-body">
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../Random Task Generator.html">Random Task Generator</a></li>
+      <li><a href="../Book-List-Generator.html">Book List Generator</a></li>
+      <li><a href="../Not at all chores.html">Not At All Chores</a></li>
+      <li><a href="../Book Lookup/index.html">Book Lookup</a></li>
+      <li><a href="index.html">Email Generator</a></li>
+    </ul>
+  </nav>
 
-  <label for="letterType">Select Letter Type:</label>
-  <select id="letterType">
-    <option value="thirdFail">Third Failed Delivery</option>
-    <option value="recommencement">Service Recommencement</option>
-    <option value="fourthFail">Fourth Failed Delivery</option>
-    <option value="overdue">Overdue Item</option>
-    <option value="pictureBooks">Transition to Picture Books</option>
-  </select>
+  <div class="email-container">
+    <header class="email-header">
+      <div class="logo-placeholder">
+        <img src="https://placehold.co/150x60?text=Library+Logo" alt="Library Logo" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+        <span>Library Logo</span>
+      </div>
+      <h1>LibraryGO Letter Generator</h1>
+    </header>
 
-  <label for="customerName">Customer First Name:</label>
-  <input type="text" id="customerName" placeholder="Enter first name">
+    <div class="instructions">
+      <h3>How to use this tool:</h3>
+      <ol>
+        <li><strong>Select</strong> the appropriate letter template from the dropdown.</li>
+        <li><strong>Enter</strong> the customer's first name to personalize the letter.</li>
+        <li><strong>Click</strong> "Generate Letter" to prepare the text.</li>
+        <li><strong>Use</strong> the copy buttons to quickly grab the subject and body.</li>
+        <li><strong>Paste</strong> into your email client and you're ready to send!</li>
+      </ol>
+    </div>
 
-  <button onclick="generateLetter()">Generate Letter</button>
+    <div class="form-section">
+      <div class="form-group">
+        <label for="letterType">Select Letter Type:</label>
+        <select id="letterType">
+          <option value="thirdFail">Third Failed Delivery</option>
+          <option value="recommencement">Service Recommencement</option>
+          <option value="fourthFail">Fourth Failed Delivery</option>
+          <option value="overdue">Overdue Item</option>
+          <option value="pictureBooks">Transition to Picture Books</option>
+        </select>
+      </div>
 
-  <label for="subjectOutput">Generated Subject:</label>
-  <textarea id="subjectOutput" readonly></textarea>
-  <button class="copy-btn" onclick="copyToClipboard('subjectOutput')">Copy Subject</button>
+      <div class="form-group">
+        <label for="customerName">Customer First Name:</label>
+        <input type="text" id="customerName" placeholder="e.g. John">
+      </div>
 
-  <label for="bodyOutput">Generated HTML Body:</label>
-  <textarea id="bodyOutput" readonly></textarea>
-  <button class="copy-btn" onclick="copyToClipboard('bodyOutput')">Copy HTML Body</button>
+      <button class="generate-btn" onclick="generateLetter()">Generate Letter</button>
+    </div>
+
+    <div class="output-section">
+      <div class="output-card">
+        <div class="output-header">
+          <label for="subjectOutput">Generated Subject</label>
+          <button class="copy-btn" onclick="copyToClipboard('subjectOutput')">
+            Copy Subject
+          </button>
+        </div>
+        <textarea id="subjectOutput" readonly placeholder="Subject will appear here..."></textarea>
+      </div>
+
+      <div class="output-card">
+        <div class="output-header">
+          <label for="bodyOutput">Generated HTML Body</label>
+          <button class="copy-btn" onclick="copyToClipboard('bodyOutput')">
+            Copy HTML Body
+          </button>
+        </div>
+        <textarea id="bodyOutput" readonly placeholder="HTML Body will appear here..."></textarea>
+      </div>
+    </div>
+  </div>
 
   <script>
     const letters = {
@@ -86,11 +139,36 @@
       document.getElementById('bodyOutput').value = letter.body.replace('{name}', name);
     }
 
-    function copyToClipboard(elementId) {
+    async function copyToClipboard(elementId) {
       const textarea = document.getElementById(elementId);
-      textarea.select();
-      document.execCommand('copy');
-      alert('Copied to clipboard!');
+      if (!textarea.value) return;
+
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        showCopyFeedback(elementId);
+      } catch (err) {
+        console.error('Unable to copy using clipboard API, falling back to execCommand', err);
+        textarea.select();
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showCopyFeedback(elementId);
+          }
+        } catch (copyErr) {
+          console.error('Fallback copy failed', copyErr);
+        }
+      }
+    }
+
+    function showCopyFeedback(elementId) {
+      const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      btn.classList.add('success');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('success');
+      }, 2000);
     }
   </script>
 </body>
