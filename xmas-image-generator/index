@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎄 Christmas Webcam</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        video { width: 100%; max-width: 400px; }
+        button { background: #c62828; color: white; border: none; padding: 12px 24px; margin: 10px 0; cursor: pointer; }
+        #result { margin: 20px 0; padding: 15px; background: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <h1>🎄 Christmas Webcam Generator</h1>
+    
+    <video id="video" autoplay playsinline></video>
+    <button id="start-btn">Start Camera</button>
+    <button id="capture-btn" disabled>Capture Image</button>
+    
+    <canvas id="canvas" style="display:none;"></canvas>
+    <div id="result"></div>
+
+    <script>
+        let stream = null;
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Start camera
+        document.getElementById('start-btn').onclick = async function() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                document.getElementById('capture-btn').disabled = false;
+                this.textContent = 'Camera Running';
+                this.disabled = true;
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Error: ' + error.message;
+            }
+        };
+
+        // Capture image
+        document.getElementById('capture-btn').onclick = async function() {
+            if (!stream) return;
+            
+            // Capture frame
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            // Stop camera
+            stream.getTracks().forEach(track => track.stop());
+            this.disabled = true;
+            
+            document.getElementById('result').innerHTML = '📸 Image captured! In a full implementation, this would be Christmas-fied.';
+            
+            // Here you'd send to your function to generate Christmas image
+        };
+    </script>
+</body>
+</html>
